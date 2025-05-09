@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: spring-ai-openrouter
+  ai:
+    openai:
+      base-url: https://openrouter.ai/api
+      api-key: 
+      chat:
+        options:
+          model: mistralai/mistral-7b-instruct:free
+  threads:
+    virtual:
+      enabled: true
+logging:
+  file:
+    name: a.log
+  level:
+    '[org.springframework.ai.chat.client.advisor]': DEBUG
+    '[org.zalando.logbook.Logbook]': TRACE
