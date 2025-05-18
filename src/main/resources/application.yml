@@ -7,7 +7,14 @@ spring:
       api-key: 
       chat:
         options:
-          model: mistralai/mistral-7b-instruct:free
+          model: deepseek/deepseek-chat-v3-0324:free
+    mcp:
+      server:
+        name: webmvc-mcp-server
+        version: 1.0.0
+        type: SYNC
+        instructions: "This server provides weather information tools and resources"
+        sse-message-endpoint: /mcp/messages
   threads:
     virtual:
       enabled: true

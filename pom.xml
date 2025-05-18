@@ -40,6 +40,12 @@
 			<artifactId>spring-ai-starter-model-openai</artifactId>
 		</dependency>
 		
+		<!-- sse 支持；WebMVC Server Transport，傳統 webmvc -->
+		<dependency>
+			<groupId>org.springframework.ai</groupId>
+			<artifactId>spring-ai-starter-mcp-server-webmvc</artifactId>
+		</dependency>
+
 		<!-- 1. 處理HTTP細節內容 HTTP 通訊的更多詳細資 -->
 		<dependency>
 			<groupId>org.zalando</groupId>
