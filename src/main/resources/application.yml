@@ -1,3 +1,5 @@
+server:
+  port: 1631
 spring:
   application:
     name: spring-ai-openrouter
@@ -10,17 +12,29 @@ spring:
           model: deepseek/deepseek-chat-v3-0324:free
     mcp:
       server:
-        name: webmvc-mcp-server
+        name: webmvc-search-mcp-server
         version: 1.0.0
         type: SYNC
-        instructions: "This server provides weather information tools and resources"
+        instructions: "This server provides google search tools and resources"
+#       default /mcp/messages，
+#       用途：這個端點會接收來自客戶端的訊息，並將它們傳遞給 Spring AI MCP Server 來進一步處理（例如作為 Prompt，或轉發到 AI 模型）。
+#       HTTP 方法：通常是 POST。
         sse-message-endpoint: /mcp/messages
+#       default /sse
+#       這是 伺服器傳送 SSE 資料給客戶端 的端點。
+#       這個端點是客戶端用來接收來自伺服器的事件流（例如 AI 模型回應的 Token 流）所使用的連線端點。
+#       HTTP 方法：通常是 GET。
+        sse-endpoint: /sse
+    web-search:
+      endpoint: https://serpapi.com/search
+      api-key: 
+  jackson:
+    time-zone: Asia/Taipei
+# 在多個 JSON 處理器（如 Gson、Jackson）可選時，優先使用 Jackson 作為轉換器。
+  mvc:
+    converters:
+      preferred-json-mapper: jackson
+  
   threads:
     virtual:
       enabled: true
-logging:
-  file:
-    name: a.log
-  level:
-    '[org.springframework.ai.chat.client.advisor]': DEBUG
-    '[org.zalando.logbook.Logbook]': TRACE
